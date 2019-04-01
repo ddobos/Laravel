@@ -22,4 +22,13 @@ class Post extends Model
             'body' => $body,
         ]);
     }
+
+    // public static function update($id, $title, $body)
+    // {
+    //     parent::update([
+    //         'id' => $id,
+    //         '$title' => $title,
+    //         'body' => $body
+    //     ]);
+    // }
 }

@@ -60,7 +60,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view("edit", ['post'=>$post]);
     }
 
     /**
@@ -72,7 +73,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        
+        $post = ['title' => $request['title'],'body' => $request['body']];
+        Post::where('id', $id)->update($post);
+        return redirect('posts');
     }
 
     /**
