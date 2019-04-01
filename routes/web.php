@@ -13,6 +13,12 @@
 
 Route::get('/',"AboutController@index");
 Route::get("/xyz", "AboutController@index");
-Route::get("/home", "AboutController@home");
-Route::get("/about", "AboutController@about");
-Route::get("/contact", "AboutController@contact");
+Route::get("/home", "HomeController@index");
+Route::get("/about", "AboutController@index");
+Route::get("/contact", "ContactController@index");
+
+Route::resource('posts', 'PostsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

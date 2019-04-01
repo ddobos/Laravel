@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <form action="{{ route('posts.store') }}" method="POST">
-            <input name = "title" type="text" class="form-control"></br>
-            <textarea name="body" id="" rows="10" class="form-control"></textarea><br>
+        <form action="{{ route('posts.edit') }}" method="POST">
+            <input name = "title" type="text" class="form-control" value={{$post['title']}}></br>
+            <textarea name="body" id="" rows="10" class="form-control">{{$post['body']}}</textarea><br>
 
             <div class="row justify-content-center">
                 <div class="col-md-8">

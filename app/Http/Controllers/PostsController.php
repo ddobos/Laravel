@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
-class AboutController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +14,10 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $posts = Post::all();
+        return view('postList', ['posts'=>$posts]);
     }
 
-   
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +36,8 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::store($request['title'], $request['body']);
+        return back();
     }
 
     /**
@@ -46,7 +48,8 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view("post",['post'=>$post] );
     }
 
     /**
