@@ -36,6 +36,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+//        $validData = $validator($request)
         Post::store($request['title'], $request['body']);
         return back();
     }
@@ -73,11 +74,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
+        //$post = Post::find($id);
         
         $post = ['title' => $request['title'],'body' => $request['body']];
         Post::where('id', $id)->update($post);
-        return redirect('posts');
+        return redirect('posts'); //back() te intoarce inapoi
     }
 
     /**
@@ -88,6 +89,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return back();
     }
 }

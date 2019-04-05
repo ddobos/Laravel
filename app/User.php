@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts(){
+        return $this->hasMany("App\Post", 'user_id'); //se specifica cheia externa 
+        //in cazul in care nu coincide cu metodalitatea laravel
+    }
 }
